@@ -12,163 +12,38 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
-        <!-- endbuild -->
-         <script type="text/javascript">
-            function hasGetUserMedia() {
-                // Note: Opera is unprefixed.
-                return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
-                          navigator.mozGetUserMedia || navigator.msGetUserMedia);
-            }
-
-            if (hasGetUserMedia()) {
-                // Good to go!
-                
-            } else {
-                alert('getUserMedia() is not supported in your browser');
-            }
-        </script>
-        <style>
-            body{
-                background-color: rgba(0,0,0,100);
-            }
-            #camera_hangar{
-                width:800px;
-                height:600px;
-                
-                margin:0 0 0 -175px;
-                -webkit-transform: scaleX(-1);
-                transform: scaleX(-1);
-                /*-webkit-filter: hue-rotate(90 deg);*/
-                /*-webkit-filter: saturate(5);*/
-            }
-
-            .mask{
-                z-index:10000;
-                width:100%;
-                max-width:1536px;
-                height:768px;
-                position: absolute;
-                background: transparent url("images/mask.png") no-repeat scroll center top;                
-            }
-
-            .video_container{
-                width:450px;
-                height:768px;
-                overflow: hidden;
-                margin: 80px auto 0;                            
-            }
-
-
-            .saturate {
-                -webkit-filter: saturate(10);
-                -moz-filter: saturate(10);
-                -o-filter: saturate(10);
-                -ms-filter: saturate(10);
-                filter: saturate(10);
-            }
-
-            .saturate {
-                -webkit-filter: saturate(10);
-                -moz-filter: saturate(10);
-                -o-filter: saturate(10);
-                -ms-filter: saturate(10);
-                filter: saturate(10);
-            }
-
-            .sepia {
-                -webkit-filter: sepia(1);
-                -moz-filter: sepia(1);
-                -o-filter: sepia(1);
-                -ms-filter: sepia(1);
-                filter: sepia(1);
-            }
-
-
-
-        </style>
+        <!-- endbuild -->        
     </head>
     <body>
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div class="mask"></div>
+        
+        <section id="booth">
+
+            <div class="camera-container">
+                <video id="booth-camera" autoplay></video>
+            </div>
+            <div id="controls">
+                <input type="button" class="button green" value="next"/>    
+            </div>
+
+            <div class="mask"></div>
 
 
-        <div class="video_container">
-            <video id="camera_hangar" class="sepia" autoplay></video>
-        </div>
-
-        <script>
-          var onFailSoHard = function(e) {
-            console.log('Reeeejected!', e);
-          };
-
-          // Not showing vendor prefixes.
-          navigator.webkitGetUserMedia({video: true, audio: true}, function(localMediaStream) {
-            var video = document.querySelector('video');
-            video.src = window.URL.createObjectURL(localMediaStream);
-
-            // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
-            // See crbug.com/110938.
-            video.onloadedmetadata = function(e) {
-              // Ready to go. Do some stuff.
-              console.log("onloadmetadata")
-            };
-          }, onFailSoHard);
+        </section>
 
 
-          
-
-
-          
-          
-        </script>
 
 
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->
-        <script src="bower_components/jquery/jquery.js"></script>
-        <script type="text/javascript"> 
-            $(document).ready(function (){
-                console.log('hola');
-                
-                $('.mask').on('click', function(){
-
-                    if( $('#camera_hangar').hasClass('sepia') ) {
-                        
-                        $('#camera_hangar').removeClass('sepia');
-                        $('#camera_hangar').addClass('saturate');
-
-                    } else {
-
-                        $('#camera_hangar').removeClass('saturate');
-                        $('#camera_hangar').addClass('sepia');
-                        
-                    }
-
-                    // $('#camera_hangar').removeClass('sepia');
-                    
-                    // alert('hola');
-                });
-
-          });
-
-        </script>
+        <script src="bower_components/jquery/jquery.js"></script>        
         <!-- endbower -->
         <!-- endbuild -->
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-            e.src='//www.google-analytics.com/analytics.js';
-            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-            ga('create','UA-XXXXX-X');ga('send','pageview');
-        </script>
-
+        
         <!-- build:js scripts/main.js -->
-        // <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
-        <!-- endbuild -->
+        <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
+        <!-- endbuild --> 
 </body>
 </html>

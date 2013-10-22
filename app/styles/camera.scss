@@ -1,0 +1,26 @@
+.mask{
+    z-index:10000;
+    width:614px;    
+    height:768px;    
+    background: transparent url("../images/layout/booth.png") no-repeat scroll center top;
+    margin:0 auto;                
+}
+
+.camera-container{
+    z-index:10000;
+    width:500px;
+    /*height:768px;*/
+    overflow: hidden;
+    margin: 0 auto 0;                            
+}
+
+#booth-camera{
+    width:1200px;
+    height:720px;    
+    /*margin:0 0 0 -175px;*/
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    // -webkit-filter: hue-rsotate(90 deg);
+    /* -webkit-filter: saturate(5);*/
+}
+

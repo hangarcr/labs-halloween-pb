@@ -1,6 +1,37 @@
 /*global define */
 define([], function () {
-    'use strict';
+    // 'use strict';
 
-    return '\'Allo \'Allo!';
+    var App = {
+
+	    validation: {
+	    	hasGetUserMedia: function (){
+	            // Note: Opera is unprefixed.
+				return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+				          navigator.mozGetUserMedia || navigator.msGetUserMedia);
+	    	}
+	    },
+
+	    logic: {
+
+
+	    },
+
+	    flow: {
+
+	    	step1: function() {
+
+	    	},
+	    	step2: function() {
+
+	    	},
+	    	step3: function() {
+
+	    	},
+
+	    }
+
+    };
+
+    return App;
 });
