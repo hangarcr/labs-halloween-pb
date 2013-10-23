@@ -2,6 +2,11 @@
 define([], function () {
     // 'use strict';
 
+    var video = document.querySelector('video');
+	var canvas = document.querySelector('canvas');
+	var ctx = canvas.getContext('2d');
+	var stream = null;
+
     var App = {
 
 	    validation: {
@@ -12,15 +17,27 @@ define([], function () {
 	    	}
 	    },
 
-	    logic: {
+	    controller: {
+	    	camera:{
+	    		setStream:function(streamValue){
+	    			stream = streamValue;
+	    		},
 
-
+	    		takePicture:function(){
+	    			// Not showing vendor prefixes or code that works cross-browser.
+					if (stream) {
+						ctx.drawImage(video, 0, 0);
+					    // "image/webp" works in Chrome 18. In other browsers, this will fall back to image/png.
+					    document.querySelector('img').src = canvas.toDataURL('image/webp');
+					}
+	    		}
+	    	}
 	    },
 
 	    flow: {
 
 	    	step1: function() {
-
+	    		App.controller.camera.takePicture();
 	    	},
 	    	step2: function() {
 

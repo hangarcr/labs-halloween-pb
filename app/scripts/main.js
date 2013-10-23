@@ -58,18 +58,18 @@ require(['app', 'jquery'], function (App, $) {
     'use strict';
     // use app here
 
-    if(App.validation.hasGetUserMedia){    
-
+    if(App.validation.hasGetUserMedia){  
 
         var onFailSoHard = function(e) {
             console.log('Reeeejected!', e);
         };
-
+        
         // Not showing vendor prefixes.
         navigator.webkitGetUserMedia({video: true, audio: false}, function(localMediaStream) {
             var video = document.querySelector('video');
             video.src = window.URL.createObjectURL(localMediaStream);
-
+            $(".glyphicon-camera").css("display", "block");
+            App.controller.camera.setStream(localMediaStream);
             // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
             // See crbug.com/110938.
             video.onloadedmetadata = function(e) {
@@ -78,10 +78,19 @@ require(['app', 'jquery'], function (App, $) {
             };
         }, onFailSoHard);
 
-
     } else {
         alert('getUserMedia() is not supported in your browser');
     }
+
+    $(".glyphicon-camera").on("click", function(){
+        App.flow.step1();
+    })
+
+    $('body').keyup(function(e){
+       if(e.keyCode == 32){
+           App.flow.step1();
+       }
+    });
 
     // console.log(app);
     // console.log('Running jQuery %s', $().jquery);

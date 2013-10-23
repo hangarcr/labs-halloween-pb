@@ -1,27 +1,68 @@
-.mask{
-    z-index:10000;
-    width:614px;    
-    height:768px;    
-    background: transparent url("../images/layout/booth.png") no-repeat scroll center top;
-    margin:0 auto;  
-    position: relative;              
+
+
+.main-wrap{
+    position: relative;
+    width: 1000px;
+    margin: 0 auto;
+
+    .mask{
+        z-index:10000;
+        width:518px;    
+        height:768px;    
+        background: transparent url("../images/layout/booth.png") no-repeat scroll center top;
+        position: absolute;
+        top: 0px;
+        left: 245px;      
+        .glyphicon-camera{
+            position: relative;
+            margin: 0 auto;
+            top: 680px;
+            display: none;
+        }        
+    }
+
+    .camera-container{
+        z-index:10000;
+        width:430px;
+        height:720px;
+        overflow: hidden;
+        margin: 0 auto 0;                            
+    }
+
+    #booth-camera{
+        width:960px;
+        height:720px;    
+        margin:70px 0 0 -230px;
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+         -webkit-filter: hue-rsotate(90 deg);
+        background-position:initial initial;
+        background-repeat:initial initial;
+        /* -webkit-filter: saturate(5);*/
+    }
+
+    .skull{
+        background: transparent url("../images/layout/skull.png") no-repeat scroll center top; 
+        width: 332px;
+        height: 402px;
+        position: absolute;
+        top: 110px;
+        left: 340px;
+    }
+
+    .photo {
+        position: absolute;
+        top: 0;
+        left: 200px;
+        img{
+            /*vertical-align:top;*/
+            
+        }
+        
+    }
+        
+
 }
 
-.camera-container{
-    z-index:10000;
-    width:500px;
-    height:720px;
-    overflow: hidden;
-    margin: 0 auto 0;                            
-}
 
-#booth-camera{
-    width:960px;
-    height:720px;    
-    margin:0 0 0 -230px;
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
-    // -webkit-filter: hue-rsotate(90 deg);
-    /* -webkit-filter: saturate(5);*/
-}
 

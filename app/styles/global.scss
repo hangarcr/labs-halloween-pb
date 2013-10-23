@@ -1,3 +1,23 @@
 body {
 	background: rgba(0,0,0,1) url("../images/layout/bg.jpg") no-repeat scroll center top;
 }
+
+.btn-icon{
+	background: url("../images/layout/btn-sprite.png");
+	background-position: -88px 0;
+	display: block;
+	color: #87d1e7;
+	width: 39px;
+	height: 39px;
+	padding: 7px 0 0 10px;
+	font-size: 19px;
+}
+
+.btn-icon:hover{
+	background-position: -0px 0;
+}
+
+.btn-icon:active{
+	background-position: -44px 0;
+}
+
