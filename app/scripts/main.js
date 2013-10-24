@@ -92,8 +92,8 @@ require(['app', 'jquery'], function (App, $) {
        }
     });
 
-    $(".glyphicon-arrow-left").on("click", function(){
-        App.controller.transition.goToStep1();
+    $(".glyphicon-share").on("click", function(){
+        App.controller.utils.shareFacebook();
     });
 
     // console.log(app);

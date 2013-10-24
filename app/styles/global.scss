@@ -1,7 +1,9 @@
 body {
 	background: rgba(0,0,0,1) url("../images/layout/bg.jpg") no-repeat scroll center top;
 }
+/*BTN Styles*/
 
+/********************* I C O N S ***********************/
 .btn-icon{
 	background: url("../images/layout/btn-sprite.png");
 	background-position: -88px 0;
@@ -20,9 +22,70 @@ body {
 .btn-icon:active{
 	background-position: -44px 0;
 }
+/********************* MAIN BTN ************************/
+.btn-main{
+	background: url("../images/layout/btn-sprite.png");
+	background-position: 0 -64px;
+	display: block;
+	color: #87d1e7;
+	width: 203px;
+	height: 38px;
+	font-size: 19px;
+	padding-top: 5px;
+	text-align: center;
+	margin-bottom: 5px;
+	color: #fff;
+}
 
-.controls{
+.btn-main:hover{
+	background-position: 0 -112px;
+}
+
+.btn-main:active{
+	background-position: 0 -160px;
+}
+
+/********************* RESET BTN ***********************/
+
+.btn-reset{
+	background: url("../images/layout/btn-sprite.png");
+	background-position: 0 -208px;
+	display: block;
+	color: #87d1e7;
+	width: 123px;
+	height: 38px;
+	font-size: 19px;
+	text-align: center;
+	padding-top: 5px;
+	margin: 20px 0 0 33px;
+	color: #fff;
+}
+
+.btn-reset:hover{
+	background-position: 0 -304px;
+}
+
+.btn-reset:active{
+	background-position: 0 -256px;
+}
+
+
+/* O T H E R */
+.step5{
+	display: none;
 	position: relative;
-    margin: 0 auto;
-    top: 680px;
+}
+
+.step2{
+	display: none;
+	position: relative;
+}
+
+.filter{
+	position: absolute;
+	top: 250px;
+	left: 15px;
+	.btn-reset{
+		margin-top: 80px;
+	}
 }

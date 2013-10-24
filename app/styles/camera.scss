@@ -12,24 +12,40 @@
         background: transparent url("../images/layout/booth.png") no-repeat scroll center top;
         position: absolute;
         top: 0px;
-        left: 245px;      
-        .glyphicon-camera{
-            position: relative;
-            margin: 0 auto;
-            top: 680px;
-            display: none;
-        }        
+        left: 245px; 
 
+        /*Control Bar*/
         .controls{
             position: relative;
             margin: 0 auto;
-            top: 650px;
-            width: 200px;
-            display: none;
-            .middle{
-                display: inline;
-                width: 50px;
-                margin: 10px 35px 0 35px;
+            top: 665px;
+            width: 180px;
+            .glyphicon-camera{
+                position: relative;
+                margin: 0 auto;
+                top: 15px;
+                display: none;
+            }  
+
+            .glyphicon-arrow-left{
+                position: absolute;
+                left: 0;
+            }
+
+            .glyphicon-arrow-right{
+                position: absolute;
+                right: 0;
+            }
+            
+            .glyphicon-share{
+                position: absolute;
+                top: 15px;
+                left: 74px;
+            }
+
+            .glyphicon-download{
+                position: absolute;
+                right: 0;
             }
         }
     }

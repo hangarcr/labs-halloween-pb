@@ -6,6 +6,7 @@ define([], function () {
 	var canvas = document.querySelector('canvas');
 	var ctx = canvas.getContext('2d');
 	var stream = null;
+	var messageFB = "404 Error";
 
     var App = {
 
@@ -33,14 +34,18 @@ define([], function () {
 	    		}
 	    	},
 
-	    	transition:{
-	    		goToStep1:function(){
-	    			$(".step5").hide();
-	    			$(".step1").show();	
+	    	utils:{
+	    		shareFacebook:function(){
+	    			var D=550,A=450,C=screen.height,B=screen.width,H=Math.round((B/2)-(D/2)),G=0,F=document,E;
+				    if(C>A){
+				        G=Math.round((C/2)-(A/2))
+				    }
+	    			window.open(
+				      'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + encodeURIComponent("http://thehangar.cr/halloween") + '&p[images][0]=&p[title]=Hangar%20of%20the%20Dead&p[summary]=' + messageFB,
+				      'facebook-share-dialog', 
+				      'width='+D+',height=436,left='+ H +',top='+ G );
 	    		}
 	    	}
-
-
 	    },
 
 	    flow: {
@@ -48,7 +53,7 @@ define([], function () {
 	    	step1: function() {
 	    		App.controller.camera.takePicture();
 	    		$(".step1").hide();
-	    		$(".step5").show();
+	    		$(".step2").show();
 	    	},
 	    	step2: function() {
 
