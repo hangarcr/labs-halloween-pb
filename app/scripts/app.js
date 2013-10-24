@@ -31,13 +31,24 @@ define([], function () {
 					    document.querySelector('img').src = canvas.toDataURL('image/webp');
 					}
 	    		}
+	    	},
+
+	    	transition:{
+	    		goToStep1:function(){
+	    			$(".step5").hide();
+	    			$(".step1").show();	
+	    		}
 	    	}
+
+
 	    },
 
 	    flow: {
 
 	    	step1: function() {
 	    		App.controller.camera.takePicture();
+	    		$(".step1").hide();
+	    		$(".step5").show();
 	    	},
 	    	step2: function() {
 

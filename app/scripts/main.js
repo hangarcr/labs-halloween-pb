@@ -92,6 +92,10 @@ require(['app', 'jquery'], function (App, $) {
        }
     });
 
+    $(".glyphicon-arrow-left").on("click", function(){
+        App.controller.transition.goToStep1();
+    });
+
     // console.log(app);
     // console.log('Running jQuery %s', $().jquery);
 });

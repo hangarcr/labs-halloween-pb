@@ -19,6 +19,19 @@
             top: 680px;
             display: none;
         }        
+
+        .controls{
+            position: relative;
+            margin: 0 auto;
+            top: 650px;
+            width: 200px;
+            display: none;
+            .middle{
+                display: inline;
+                width: 50px;
+                margin: 10px 35px 0 35px;
+            }
+        }
     }
 
     .camera-container{
@@ -26,7 +39,13 @@
         width:430px;
         height:720px;
         overflow: hidden;
-        margin: 0 auto 0;                            
+        margin: 0 auto 0;      
+        img{
+            /*vertical-align:top;*/
+            width:960px;
+            height:720px; 
+            margin:70px 0 0 -230px;
+        }                      
     }
 
     #booth-camera{
@@ -49,18 +68,6 @@
         top: 110px;
         left: 340px;
     }
-
-    .photo {
-        position: absolute;
-        top: 0;
-        left: 200px;
-        img{
-            /*vertical-align:top;*/
-            
-        }
-        
-    }
-        
 
 }
 

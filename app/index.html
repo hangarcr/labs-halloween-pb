@@ -22,19 +22,22 @@
         <section id="booth">
             <div class="main-wrap">
                 <div class="camera-container">
-                    <video id="booth-camera" autoplay></video>
-
+                    <video class="step1" id="booth-camera" autoplay></video>
+                    <img src="">
+                    <canvas style="display:none;"></canvas>
                 </div>
                 <!--<div id="controls">
                     <input type="button" class="button green" value="next"/>    
                 </div>-->
                 <div class="skull"></div>
-                <div class="photo">
-                    <img src="">
-                    <canvas style="display:none;"></canvas>
-                </div>
+               
                 <div class="mask">
-                    <i class="glyphicon glyphicon-camera btn-icon btn-icon"></i>
+                    <i class="glyphicon glyphicon-camera btn-icon step1" title="Take a Picture"></i>
+                    <div class="controls step5">
+                        <i class="glyphicon glyphicon-arrow-left btn-icon" title="Back"></i>
+                        <div class="middle"><i class="glyphicon glyphicon-share btn-icon" title="Share"></i></div>
+                        <i class="glyphicon glyphicon-download btn-icon" title="Download"></i>
+                    </div>
                 </div>
                 
             </div>
