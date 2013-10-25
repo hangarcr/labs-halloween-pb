@@ -161,7 +161,7 @@ module.exports = function (grunt) {
                     // required to support SourceMaps
                     // http://requirejs.org/docs/errors.html#sourcemapcomments
                     preserveLicenseComments: false,
-                    useStrict: true,
+                    useStrict: false,
                     wrap: true
                     //uglify2: {} // https://github.com/mishoo/UglifyJS2
                 }
@@ -337,8 +337,6 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', [
-        'jshint',
-        'test',
         'build'
     ]);
 };

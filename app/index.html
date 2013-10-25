@@ -33,13 +33,13 @@
                
                 <div class="mask">
                     <div class="controls">
-                        <div class="step1"><i class="glyphicon glyphicon-camera btn-icon " title="Take a Picture"></i></div>
-                        <div class="step2">
-                            <i class="glyphicon glyphicon-arrow-left btn-icon" title="Back"></i>
-                            <i class="glyphicon glyphicon-arrow-right btn-icon" title="Back"></i>
+                        <div class="step1"><i class="glyphicon glyphicon-camera btn-icon next" title="Take a Picture"></i></div>
+                        <div class="step2 step3 step4">
+                            <i class="glyphicon glyphicon-arrow-left btn-icon back" title="Back"></i>
+                            <i class="glyphicon glyphicon-arrow-right btn-icon next" title="Next"></i>
                         </div>
                         <div class="step5">
-                            <i class="glyphicon glyphicon-arrow-left btn-icon" title="Back"></i>
+                            <i class="glyphicon glyphicon-arrow-left btn-icon back" title="Back"></i>
                             <i class="glyphicon glyphicon-share btn-icon" title="Share"></i>
                             <i class="glyphicon glyphicon-download btn-icon" title="Download"></i>
                         </div>
@@ -56,11 +56,84 @@
                     <a class="btn-main">Krokodil</a>
                     <a class="btn-reset">Reset</a>
                 </div>
+
+                <div class="costume step3">
+                    <div class="panel-group" id="accordion">
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a class="accordion-toggle btn-main" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                              Wolfman
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                Wolfman content
+                            </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a class="accordion-toggle btn-main" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                              Zombie
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Zombie content
+                            </div>
+                        </div>
+                      </div>
+                      <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a class="accordion-toggle btn-main" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                              Vampire
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Vampire content
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                        <div class="panel-heading">
+                          <h4 class="panel-title">
+                            <a class="accordion-toggle btn-main" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                              Extras
+                            </a>
+                          </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                Extras content
+                            </div>
+                        </div>
+                      </div>
+                      </div> 
+                    </div><!--panel-group-->
+                </div>
+
+                <div class="messages step4">
+                    <a class="btn-main">Didn't submit Tenrox</a>
+                    <a class="btn-main">IE6 Support</a>
+                    <a class="btn-main">Didn't name my layers</a>
+                    <a class="btn-main">[Spam] Reply All</a>
+                    <a class="btn-main">Due to yesturday</a>
+                    <a class="btn-main">Work from Grave</a>
+                    <a class="btn-main">Jira is Down</a>
+                    <a class="btn-main">404 not found</a>
+                    <a class="btn-reset">No Message</a>
+                </div>
                 
             </div>
         </section>
 
-        <!--<object height="50" width="100" data="audio/HangarOfTheDead.mp3"></object>-->
+        <!--<object class="audio" height="50" width="100" data="audio/HangarOfTheDead.mp3"></object>-->
         
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->

@@ -13,6 +13,7 @@ body {
 	height: 39px;
 	padding: 7px 0 0 10px;
 	font-size: 19px;
+	cursor: pointer;
 }
 
 .btn-icon:hover{
@@ -27,7 +28,6 @@ body {
 	background: url("../images/layout/btn-sprite.png");
 	background-position: 0 -64px;
 	display: block;
-	color: #87d1e7;
 	width: 203px;
 	height: 38px;
 	font-size: 19px;
@@ -35,14 +35,20 @@ body {
 	text-align: center;
 	margin-bottom: 5px;
 	color: #fff;
+	cursor: pointer;
+	font-family: DinWebCondLight;
 }
 
 .btn-main:hover{
 	background-position: 0 -112px;
+	color: #fff;
+	text-decoration: none;
 }
 
 .btn-main:active{
 	background-position: 0 -160px;
+	color: #fff;
+	text-decoration: none;
 }
 
 /********************* RESET BTN ***********************/
@@ -51,7 +57,6 @@ body {
 	background: url("../images/layout/btn-sprite.png");
 	background-position: 0 -208px;
 	display: block;
-	color: #87d1e7;
 	width: 123px;
 	height: 38px;
 	font-size: 19px;
@@ -59,33 +64,87 @@ body {
 	padding-top: 5px;
 	margin: 20px 0 0 33px;
 	color: #fff;
+	cursor: pointer;
+	font-family: DinWebCondLight;
+	text-transform: uppercase;
 }
 
 .btn-reset:hover{
 	background-position: 0 -304px;
+	color: #fff;
+	text-decoration: none;
 }
 
 .btn-reset:active{
 	background-position: 0 -256px;
+	color: #fff;
+	text-decoration: none;
 }
 
 
 /* O T H E R */
-.step5{
+.audio{
+	visibility:hidden;
+}
+
+.step2, .step3, .step4, .step5{
 	display: none;
 	position: relative;
 }
 
-.step2{
-	display: none;
-	position: relative;
-}
-
-.filter{
+.sitebar{
 	position: absolute;
 	top: 250px;
 	left: 15px;
+}
+
+.filter{
+	@extend .sitebar;
 	.btn-reset{
 		margin-top: 80px;
+	}
+
+	.btn-main{
+		font-style: italic;
+	}
+}
+
+.messages{
+	@extend .sitebar;
+	.btn-main{
+		text-transform: uppercase;
+	}
+}
+
+.costume{
+	@extend .sitebar;
+
+	.panel{
+		border: none;
+		background: transparent;
+		.panel-heading{
+			border: none;
+			background: transparent;
+		}
+	}
+
+	.panel-group .panel-heading + .panel-collapse .panel-body{
+		border:none;		
+	}
+
+	.panel-body{
+		background-color: #010d1f;
+		border:1px solid #000;
+		opacity: 0.6;
+		border-radius: 5px;
+		margin: -11px 20px 0px;
+		padding: 10px;
+		color: #fff;
+	}
+
+	.btn-main{
+		text-transform: uppercase;
+		color: #fff;
+		margin-bottom: 0;
 	}
 }

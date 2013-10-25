@@ -28,7 +28,7 @@ require.config({
             deps: ['jquery', 'bootstrapTransition']
         },
         bootstrapCollapse: {
-            deps: ['jquery', 'bootstrapTransition']
+            deps: ['bootstrapTransition']
         },
         bootstrapDropdown: {
             deps: ['jquery']
@@ -54,10 +54,10 @@ require.config({
     }
 });
 
-require(['app', 'jquery'], function (App, $) {
+require(['app', 'jquery', 'bootstrapCollapse'], function (App, $) {
     'use strict';
     // use app here
-
+    //---------------------- Active Camera ----------------------
     if(App.validation.hasGetUserMedia){  
 
         var onFailSoHard = function(e) {
@@ -82,19 +82,34 @@ require(['app', 'jquery'], function (App, $) {
         alert('getUserMedia() is not supported in your browser');
     }
 
-    $(".glyphicon-camera").on("click", function(){
-        App.flow.step1();
-    })
+    //---------------------- BTN Events ----------------------
 
-    $('body').keyup(function(e){
-       if(e.keyCode == 32){
-           App.flow.step1();
-       }
+    $(".next").on("click", function(){
+        App.controller.utils.nextStep();
+    });
+
+    $(".back").on("click", function(){
+        App.controller.utils.backStep();
     });
 
     $(".glyphicon-share").on("click", function(){
         App.controller.utils.shareFacebook();
     });
+
+    $('body').keyup(function(e){
+       if(e.keyCode == 32){
+           App.controller.utils.nextStep();
+       }
+    });
+
+    //---------------------- Accordion ----------------------
+    
+   // $(".collapse").collapse();
+    $('#accordion').collapse({
+        toggle: true
+    });
+
+    //alert($('#accordion'));
 
     // console.log(app);
     // console.log('Running jQuery %s', $().jquery);
