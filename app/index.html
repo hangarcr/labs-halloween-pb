@@ -22,9 +22,9 @@
         <section id="booth">
             <div class="main-wrap">
                 <div class="camera-container">
-                    <video class="step1" id="booth-camera" autoplay></video>
-                    <img src="">
-                    <canvas style="display:none;"></canvas>
+                    <video width="640" height="480" class="step1" id="booth-camera" autoplay></video>
+                    <img id="booth-photo" src="">
+                    <canvas width="640" height="480" id="booth-canvas"></canvas>
                 </div>
                 <!--<div id="controls">
                     <input type="button" class="button green" value="next"/>    
@@ -48,12 +48,12 @@
                 </div>
 
                 <div class="filter step2">
-                    <a class="btn-main">Zombie aspergilosis</a>
-                    <a class="btn-main">Canis lupus-taenia</a>
-                    <a class="btn-main">Pupkinysis</a>
-                    <a class="btn-main">Vampire cytogenes</a>
-                    <a class="btn-main">Ghostmonella</a>
-                    <a class="btn-main">Krokodil</a>
+                    <a class="btn-main" data-filter="zombie">Zombie aspergilosis</a>
+                    <a class="btn-main" data-filter="canis">Canis lupus-taenia</a>
+                    <a class="btn-main" data-filter="pup">Pupkinysis</a>
+                    <a class="btn-main" data-filter="vampire">Vampire cytogenes</a>
+                    <a class="btn-main" data-filter="ghost">Ghostmonella</a>
+                    <a class="btn-main" data-filter="krokodil">Krokodil</a>
                     <a class="btn-reset">Reset</a>
                 </div>
 

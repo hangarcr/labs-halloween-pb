@@ -1,35 +1,47 @@
 /*global define */
 define([], function () {
-    // 'use strict';
-
-    var video = document.querySelector('video');
-	var canvas = document.querySelector('canvas');
-	var ctx = canvas.getContext('2d');
-	var stream = null;
-	var messageFB = "404 Error";
-	var currentStep = 1;
+    'use strict';
 
     var App = {
+    	
+    	config:{
+    		messageFB: "404 Error",
+    		video: {video: true, audio: false},
+    		currentStep: 1
+    	},
+
+    	obj: {    		
+    		video: document.querySelector('#booth-camera'),
+    		canvas: document.querySelector('#booth-canvas'),
+    		photo: document.querySelector('#booth-photo'),    	
+    		stream: null
+    	},
 
 	    validation: {
-	    	hasGetUserMedia: function (){
+	    	hasGetUserMedia: function (){	    	
 	            // Note: Opera is unprefixed.
-				return !!(navigator.getUserMedia );
+				return !!(navigator.getUserMedia || navigator.webkitGetUserMedia ||
+            			navigator.mozGetUserMedia || navigator.msGetUserMedia );
+	    	},
+	    	errorCallback: function (error){
+	    		console.log("Video capture error: ", error.code); 
 	    	}
 	    },
 
 	    controller: {
 	    	camera:{
 	    		setStream:function(streamValue){
-	    			stream = streamValue;
+	    			App.obj.stream = streamValue;
 	    		},
 
 	    		takePicture:function(){
 	    			// Not showing vendor prefixes or code that works cross-browser.
-					if (stream) {
-						ctx.drawImage(video, 0, 0);
-					    // "image/webp" works in Chrome 18. In other browsers, this will fall back to image/png.
-					    document.querySelector('img').src = canvas.toDataURL('image/webp');
+					if (App.obj.stream) {
+						var ctx = App.obj.canvas.getContext('2d');
+						ctx.drawImage(App.obj.video, 0, 0, App.obj.canvas.width, App.obj.canvas.height);
+					    // "image/webp" works in Chrome 18. In other browsers, this will fall back to image/png.					    
+					    App.obj.photo.src = App.obj.canvas.toDataURL('image/jpeg', 1);
+					    console.log(App.obj.photo);
 					}
 	    		}
 	    	},
@@ -46,8 +58,9 @@ define([], function () {
 				      'width='+D+',height=436,left='+ H +',top='+ G );
 	    		},
 
-	    		nextStep:function(){
-					switch(currentStep)
+	    		nextStep:function(){	    				    			
+
+					switch(App.config.currentStep)
 					{
 						case 1:
 						  App.flow.step1();
@@ -62,15 +75,15 @@ define([], function () {
 						  App.flow.step4();
 						  break;
 					}
-	    			$(".step" + currentStep).hide();
-	    			currentStep++;
-					$(".step" + currentStep).show();
+	    			$(".step" + App.config.currentStep).hide();
+	    			App.config.currentStep++;
+					$(".step" + App.config.currentStep).show();
 	    		},
 
 	    		backStep:function(){
-	    			$(".step" + currentStep).hide();
-	    			currentStep--;
-					$(".step" + currentStep).show();
+	    			$(".step" + App.config.currentStep).hide();
+	    			App.config.currentStep--;
+					$(".step" + App.config.currentStep).show();
 	    		}
 	    	}
 	    },
