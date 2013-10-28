@@ -1,5 +1,10 @@
 
 
+$camera-width: 960px;
+$camera-height: 720px;
+$booth-width: 518px;
+$booth-height: 768px;
+
 .main-wrap{
     position: relative;
     width: 1000px;
@@ -7,8 +12,8 @@
 
     .mask{
         z-index:10000;
-        width:518px;    
-        height:768px;    
+        width:$booth-width;    
+        height:$booth-height;    
         background: transparent url("../images/layout/booth.png") no-repeat scroll center top;
         position: absolute;
         top: 0px;
@@ -20,6 +25,7 @@
             margin: 0 auto;
             top: 665px;
             width: 180px;
+
             .glyphicon-camera{
                 position: relative;
                 margin: 0 auto;
@@ -51,30 +57,37 @@
     }
 
     .camera-container{
-        z-index:10000;
+        z-index:9999;
         width:430px;
         height:720px;
         overflow: hidden;
-        margin: 0 auto 0;      
-        img{
-            /*vertical-align:top;*/
+        margin: 0 auto 0;
+
+        video#booth-camera{
+            width:$camera-width;
+            height:$camera-height;    
+            margin:70px 0 0 -230px;
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);        
+            background-position:initial initial;
+            background-repeat:initial initial;        
+        }
+
+        img#booth-photo{            
             width:960px;
             height:720px; 
             margin:70px 0 0 -230px;
-        }                      
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1);
+        }
+
+        canvas#booth-canvas{
+            width: $camera-width;
+            height: $camera-height;
+
+        }                     
     }
 
-    #booth-camera{
-        width:960px;
-        height:720px;    
-        margin:70px 0 0 -230px;
-        -webkit-transform: scaleX(-1);
-        transform: scaleX(-1);
-         -webkit-filter: hue-rsotate(90 deg);
-        background-position:initial initial;
-        background-repeat:initial initial;
-        /* -webkit-filter: saturate(5);*/
-    }
 
     .skull{
         background: transparent url("../images/layout/skull.png") no-repeat scroll center top; 

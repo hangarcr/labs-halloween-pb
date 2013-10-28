@@ -55,32 +55,45 @@ require.config({
 });
 
 require(['app', 'jquery', 'bootstrapCollapse'], function (App, $) {
-    'use strict';
-    // use app here
+    'use strict';    
+
     //---------------------- Active Camera ----------------------
     if(App.validation.hasGetUserMedia){  
 
-        var onFailSoHard = function(e) {
-            console.log('Reeeejected!', e);
-        };
-        
-        // Not showing vendor prefixes.
-        navigator.webkitGetUserMedia({video: true, audio: false}, function(localMediaStream) {
-            var video = document.querySelector('video');
-            video.src = window.URL.createObjectURL(localMediaStream);
-            $(".glyphicon-camera").css("display", "block");
-            App.controller.camera.setStream(localMediaStream);
-            // Note: onloadedmetadata doesn't fire in Chrome when using it with getUserMedia.
-            // See crbug.com/110938.
-            video.onloadedmetadata = function(e) {
-                // Ready to go. Do some stuff.
-                console.log("onloadmetadata")
-            };
-        }, onFailSoHard);
+        if(navigator.getUserMedia) { // Standard
 
+            navigator.getUserMedia(App.config.video, function(stream) {
+                
+                App.controller.camera.setStream(stream);
+                App.obj.video.src = stream;
+                App.obj.video.play();
+                $(".glyphicon-camera").css("display", "block");
+
+            }, App.validation.errorCallback);
+
+        } else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+
+            navigator.webkitGetUserMedia(App.config.video, function(stream){
+
+                App.controller.camera.setStream(stream);
+                App.obj.video.src = window.webkitURL.createObjectURL(stream);
+                App.obj.video.play();
+                $(".glyphicon-camera").css("display", "block");
+
+            }, App.validation.errorCallback);
+        }
+                    
     } else {
         alert('getUserMedia() is not supported in your browser');
     }
+
+    //---------------------- BTN Filters ----------------------
+
+    $('.filter .btn-main').on("click", function () {        
+        $(App.obj.photo).removeClass();
+        var filter = $(this).attr("data-filter");        
+        $(App.obj.photo).addClass(filter);
+    });
 
     //---------------------- BTN Events ----------------------
 

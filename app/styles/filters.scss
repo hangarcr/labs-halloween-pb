@@ -1,0 +1,39 @@
+
+.zombie{
+    -webkit-filter: hue-rotate(90deg);
+    // -webkit-filter: contrast(5);
+    -webkit-filter: saturate(5);
+}
+
+.canis{
+    -webkit-filter: blur(3px);
+}
+
+.pup{
+    -webkit-filter: contrast(5);
+}
+
+.vampire{
+    -webkit-filter: grayscale(0.5);
+}
+
+.ghost{
+    -webkit-filter: brightness(2.5);
+}
+
+.krokodil{
+    -webkit-filter: saturate(2);
+    -webkit-filter: hue-rotate(180deg);
+}
+
+// -webkit-filter: blur(3px);
+// -webkit-filter: grayscale(1);
+// -webkit-filter: sepia(1);
+// -webkit-filter: brightness(2.5);
+// -webkit-filter: contrast(5);
+// -webkit-filter: hue-rotate(125deg);
+// -webkit-filter: invert(1);
+// -webkit-filter: saturate(3);
+// -webkit-filter: opacity(0.3);
+
+
