@@ -1,6 +1,6 @@
 
 .zombie{
-    -webkit-filter: hue-rotate(90deg);
+    -webkit-filter: hue-rotate(180deg);
     // -webkit-filter: contrast(5);
     -webkit-filter: saturate(5);
 }
@@ -10,7 +10,8 @@
 }
 
 .pup{
-    -webkit-filter: contrast(5);
+    -webkit-filter: hue-rotate(255deg);
+    -webkit-filter: contrast(4);
 }
 
 .vampire{
@@ -18,6 +19,7 @@
 }
 
 .ghost{
+    -webkit-filter: opacity(0.3);
     -webkit-filter: brightness(2.5);
 }
 

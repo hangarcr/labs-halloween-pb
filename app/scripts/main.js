@@ -89,10 +89,15 @@ require(['app', 'jquery', 'bootstrapCollapse'], function (App, $) {
 
     //---------------------- BTN Filters ----------------------
 
-    $('.filter .btn-main').on("click", function () {        
+    $('.filter .btn-main').on("click", function () {    
         $(App.obj.photo).removeClass();
-        var filter = $(this).attr("data-filter");        
+        var filter = $(this).attr("data-filter");
         $(App.obj.photo).addClass(filter);
+    });
+
+
+    $('.btn-reset').on("click", function () {
+        $(App.obj.photo).removeClass();
     });
 
     //---------------------- BTN Events ----------------------
