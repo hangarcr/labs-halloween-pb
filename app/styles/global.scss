@@ -148,3 +148,41 @@ body {
 		margin-bottom: 0;
 	}
 }
+
+.termomenter{
+	background-image: url('../images/layout/termometer.png');
+	position: absolute;
+	top: 455px;
+	right: 170px;
+	width: 122px;
+	height: 252px;
+	z-index: 1000;
+	div{
+		position: relative;
+		width: 4px;
+		left: 88px;
+	}
+	.level1{
+		background-image: none;
+	}
+	.level2{
+		background-image: url('../images/layout/level2.jpg');
+		height: 38px;
+		top: 179px;
+	}
+	.level3{
+		background-image: url('../images/layout/level3.jpg');
+		height: 76px;
+		top: 141px;
+	}
+	.level4{
+		background-image: url('../images/layout/level4.jpg');
+		height: 114px;
+		top: 103px;
+	}
+	.level5{
+		background-image: url('../images/layout/level5.jpg');
+		height: 152px;
+		top: 65px;
+	}
+}
