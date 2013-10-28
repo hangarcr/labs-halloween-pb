@@ -78,12 +78,14 @@ define([], function () {
 	    			$(".step" + App.config.currentStep).hide();
 	    			App.config.currentStep++;
 					$(".step" + App.config.currentStep).show();
+					$(".termomenter").find("div").removeAttr("class").addClass("level" + App.config.currentStep);
 	    		},
 
 	    		backStep:function(){
 	    			$(".step" + App.config.currentStep).hide();
 	    			App.config.currentStep--;
 					$(".step" + App.config.currentStep).show();
+					$(".termomenter").find("div").removeAttr("class").addClass("level" + App.config.currentStep);
 	    		}
 	    	}
 	    },

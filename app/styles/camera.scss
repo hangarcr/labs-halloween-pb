@@ -11,7 +11,7 @@ $booth-height: 768px;
     margin: 0 auto;
 
     .mask{
-        z-index:10000;
+        z-index:99;
         width:$booth-width;    
         height:$booth-height;    
         background: transparent url("../images/layout/booth.png") no-repeat scroll center top;

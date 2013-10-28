@@ -95,6 +95,10 @@ require(['app', 'jquery', 'bootstrapCollapse'], function (App, $) {
         $(App.obj.photo).addClass(filter);
     });
 
+    $('.filter .btn-reset').on("click", function () {        
+        $(App.obj.photo).removeClass();
+    });    
+
     //---------------------- BTN Events ----------------------
 
     $(".next").on("click", function(){
