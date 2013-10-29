@@ -25,6 +25,12 @@
                     <video width="640" height="480" class="step1" id="booth-camera" autoplay></video>
                     <img id="booth-photo" src="">
                     <canvas width="640" height="480" id="booth-canvas"></canvas>
+                    <div class="img-part-content">
+                        <img class="img-fullface" src=""/>
+                        <img class="img-forehead" src=""/>
+                        <img class="img-eyes" src=""/>
+                        <img class="img-mouth" src=""/>
+                    </div>
                 </div>
                 <!--<div id="controls">
                     <input type="button" class="button green" value="next"/>    
@@ -43,7 +49,6 @@
                             <i class="glyphicon glyphicon-share btn-icon" title="Share"></i>
                             <i class="glyphicon glyphicon-download btn-icon" title="Download"></i>
                         </div>
-                        
                     </div>
                 </div>
 
@@ -59,63 +64,116 @@
 
                 <div class="costume step3">
                     <div class="panel-group" id="accordion">
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h4 class="panel-title">
-                            <a class="accordion-toggle btn-main" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                              Wolfman
-                            </a>
-                          </h4>
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                Wolfman content
-                            </div>
-                        </div>
-                      </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h4 class="panel-title">
-                            <a class="accordion-toggle btn-main" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                              Zombie
-                            </a>
-                          </h4>
-                        </div>
-                        <div id="collapseTwo" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                Zombie content
-                            </div>
-                        </div>
-                      </div>
-                      <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h4 class="panel-title">
-                            <a class="accordion-toggle btn-main" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                              Vampire
-                            </a>
-                          </h4>
-                        </div>
-                        <div id="collapseThree" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                Vampire content
-                            </div>
-                        </div>
                         <div class="panel panel-default">
-                        <div class="panel-heading">
-                          <h4 class="panel-title">
-                            <a class="accordion-toggle btn-main" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                              Extras
-                            </a>
-                          </h4>
-                        </div>
-                        <div id="collapseFour" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                Extras content
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle btn-main btn-main-selected" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                      Wolfman
+                                    </a>
+                                </h4>
                             </div>
-                        </div>
-                      </div>
-                      </div> 
+                            <div id="collapseOne" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <div class="bg-blue"></div>
+                                    <div id="carousel-wolfman" class="carousel slide">
+                                      <!-- Wrapper for slides -->
+                                      <div class="carousel-inner">
+                                      </div>
+
+                                      <!-- Controls -->
+                                      <a class="left carousel-control" href="#carousel-wolfman" data-slide="prev">
+                                        <span class="icon-prev"></span>
+                                      </a>
+                                      <a class="right carousel-control" href="#carousel-wolfman" data-slide="next">
+                                        <span class="icon-next"></span>
+                                      </a>
+                                    </div><!--carousel-->
+                                </div>
+                            </div>
+                        </div><!--panel-default-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle btn-main" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                      Zombie
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="bg-blue"></div>
+                                    <div id="carousel-zombie" class="carousel slide">
+                                      <!-- Wrapper for slides -->
+                                      <div class="carousel-inner">
+                                      </div>
+
+                                      <!-- Controls -->
+                                      <a class="left carousel-control" href="#carousel-zombie" data-slide="prev">
+                                        <span class="icon-prev"></span>
+                                      </a>
+                                      <a class="right carousel-control" href="#carousel-zombie" data-slide="next">
+                                        <span class="icon-next"></span>
+                                      </a>
+                                    </div><!--carousel-->
+                                </div>
+                            </div>
+                        </div><!--panel-default-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle btn-main" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                      Vampire
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="bg-blue"></div>
+                                    <div id="carousel-vampire" class="carousel slide">
+                                      <!-- Wrapper for slides -->
+                                      <div class="carousel-inner">
+                                      </div>
+
+                                      <!-- Controls -->
+                                      <a class="left carousel-control" href="#carousel-vampire" data-slide="prev">
+                                        <span class="icon-prev"></span>
+                                      </a>
+                                      <a class="right carousel-control" href="#carousel-vampire" data-slide="next">
+                                        <span class="icon-next"></span>
+                                      </a>
+                                    </div><!--carousel-->
+                                </div>
+                            </div>
+                        </div><!--panel-default-->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle btn-main" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+                                      Extras
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="bg-blue"></div>
+                                    <div id="carousel-extras" class="carousel slide">
+                                      <!-- Wrapper for slides -->
+                                      <div class="carousel-inner">
+                                      </div>
+
+                                      <!-- Controls -->
+                                      <a class="left carousel-control" href="#carousel-extras" data-slide="prev">
+                                        <span class="icon-prev"></span>
+                                      </a>
+                                      <a class="right carousel-control" href="#carousel-extras" data-slide="next">
+                                        <span class="icon-next"></span>
+                                      </a>
+                                    </div><!--carousel-->
+                                </div>
+                            </div>
+                      </div><!--panel-default-->
                     </div><!--panel-group-->
+                    <a class="btn-reset clear-all">Clear All</a>
                 </div>
 
                 <div class="messages step4">

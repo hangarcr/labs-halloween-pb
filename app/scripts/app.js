@@ -7,7 +7,9 @@ define([], function () {
     	config:{
     		messageFB: "404 Error",
     		video: {video: true, audio: false},
-    		currentStep: 1
+    		currentStep: 1,
+    		imgUrl: "/images/monsterparts/",
+    		filter: ""
     	},
 
     	obj: {    		
@@ -35,6 +37,8 @@ define([], function () {
 	    		},
 
 	    		takePicture:function(){
+	    			//Clean Picture Class
+	    			$(App.obj.photo).removeClass();
 	    			// Not showing vendor prefixes or code that works cross-browser.
 					if (App.obj.stream) {
 						var ctx = App.obj.canvas.getContext('2d');
@@ -58,8 +62,11 @@ define([], function () {
 				      'width='+D+',height=436,left='+ H +',top='+ G );
 	    		},
 
-	    		nextStep:function(){	    				    			
+	    		setFilter:function(filter){
+	    			App.config.filter = filter;
+	    		},
 
+	    		nextStep:function(){	    				    			
 					switch(App.config.currentStep)
 					{
 						case 1:
@@ -86,6 +93,21 @@ define([], function () {
 	    			App.config.currentStep--;
 					$(".step" + App.config.currentStep).show();
 					$(".termomenter").find("div").removeAttr("class").addClass("level" + App.config.currentStep);
+	    		},
+
+	    		loadImages:function(jsonOBJ, category){
+	    			var carouselTemp = $("#carousel-" + category + " .carousel-inner");
+	    			$.each(jsonOBJ, function() {
+	    				var obj = "<div class='item part' data-category='" + this.category + "'><img src='" + App.config.imgUrl + category + "/" + this.category + "/" + this.fileName + "'/></div>";
+				    	carouselTemp.append(obj);
+				    });
+				    carouselTemp.find(".item").first().addClass("active");
+	    		},
+
+	    		pasteImage:function(category, url){
+	    			var imgObj = $('.img-part-content').find(".img-"+category);
+	    			imgObj.attr("src",url);
+	    			imgObj.addClass(App.config.filter);
 	    		}
 	    	}
 	    },
@@ -95,14 +117,24 @@ define([], function () {
 	    		App.controller.camera.takePicture();
 	    	},
 	    	step2: function() {
-	    		console.log("Hacer paso 2");
+	    		// Pulls in meal data from JSON file
+				$.getJSON('json/monster-part.json', function(json) {
+				    App.controller.utils.loadImages(json.Wolfman, "wolfman");
+				    App.controller.utils.loadImages(json.zombie, "zombie");
+				    App.controller.utils.loadImages(json.vampire, "vampire");
+				    App.controller.utils.loadImages(json.extras, "extras");
+				}).done(function() {
+					$(".part").on("click", function(){
+				        App.controller.utils.pasteImage($(this).data("category"), $(this).find("img").attr("src"));
+				    });
+				});
 	    	},
 	    	step3: function() {
-	    		console.log("Hacer paso 3");
+	    		console.log("Hacer paso 4");
 	    	},
 	    	step4: function() {
 	    		console.log("Hacer paso 4");
-	    	},
+	    	}
 
 	    }
 

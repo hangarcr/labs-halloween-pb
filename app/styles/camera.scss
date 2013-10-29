@@ -84,17 +84,27 @@ $booth-height: 768px;
         canvas#booth-canvas{
             width: $camera-width;
             height: $camera-height;
+        }    
 
-        }                     
+        .img-part-content{
+            position: absolute;
+            top: 0;
+            width:$camera-width;
+            height:$camera-height;  
+            img{
+                position: absolute;
+                top: 0;
+                left: -31px;
+            }
+        }      
     }
 
-
     .skull{
-        background: transparent url("../images/layout/skull.png") no-repeat scroll center top; 
+        background: transparent url("../images/layout/guidelines.png") no-repeat scroll center top; 
         width: 332px;
         height: 402px;
         position: absolute;
-        top: 110px;
+        top: 319px;
         left: 340px;
     }
 

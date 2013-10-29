@@ -1,0 +1,186 @@
+{
+    "Wolfman": [
+        {
+            "fileName": "mascara.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "nariz.png",
+            "category": "mouth"
+        }
+    ],
+    "zombie": [
+        {
+            "fileName": "eye1.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "eye2.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "eye3.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "toxic_zombie_eyes.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "balazo.png",
+            "category": "forehead"
+        },
+        {
+            "fileName": "boca1.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "boca2.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "boca3.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "toxic_zombie_mouth.png",
+            "category": "mouth"
+        }
+    ],
+    "vampire": [
+        {
+            "fileName": "vampire_eyes_1.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "vampire_eyes_2.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "vampire_mouth_1.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "vampire_mouth_2.png",
+            "category": "mouth"
+        }
+    ],
+    "extras": [
+        {
+            "fileName": "alien_eyes_1.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "cyborg_eyes.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "demon_alien_eyes.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "Demon_eye_b.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "Demon_eye_C.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "Demon_Eye.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "Eye_Patch-1.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "glasses.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "glasses2.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "mascara_alien.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "parche.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "bandages.png",
+            "category": "forehead"
+        },
+        {
+            "fileName": "cicatriz1.png",
+            "category": "forehead"
+        },
+        {
+            "fileName": "cicatriz2.png",
+            "category": "forehead"
+        },
+        {
+            "fileName": "crane.png",
+            "category": "fullface"
+        },
+        {
+            "fileName": "mascara_robot.png",
+            "category": "fullface"
+        },
+        {
+            "fileName": "mascara.png",
+            "category": "fullface"
+        },
+        {
+            "fileName": "alien_mouth.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "barba.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "beard1.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "beard2.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "beard3.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "cyborg_mouth.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "demon-mouth-nose.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "demon-mouth.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "Moustache-1.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "tegobi1.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "tegobi2.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "tegobi3.png",
+            "category": "mouth"
+        }
+    ]
+}

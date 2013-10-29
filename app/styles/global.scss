@@ -29,7 +29,7 @@ body {
 	background-position: 0 -64px;
 	display: block;
 	width: 203px;
-	height: 38px;
+	height: 37px;
 	font-size: 19px;
 	padding-top: 5px;
 	text-align: center;
@@ -49,6 +49,21 @@ body {
 	background-position: 0 -160px;
 	color: #fff;
 	text-decoration: none;
+}
+
+.btn-main-selected{
+	background: url("../images/layout/btn-sprite.png");
+	background-position: 0 -112px;
+	display: block;
+	width: 203px;
+	height: 37px;
+	font-size: 19px;
+	padding-top: 5px;
+	text-align: center;
+	margin-bottom: 5px;
+	color: #fff;
+	cursor: pointer;
+	font-family: DinWebCondLight;
 }
 
 /********************* RESET BTN ***********************/
@@ -125,6 +140,7 @@ body {
 		.panel-heading{
 			border: none;
 			background: transparent;
+			padding: 0;
 		}
 	}
 
@@ -133,19 +149,38 @@ body {
 	}
 
 	.panel-body{
-		background-color: #010d1f;
-		border:1px solid #000;
-		opacity: 0.6;
-		border-radius: 5px;
-		margin: -11px 20px 0px;
-		padding: 10px;
+		margin: 0px 8px;
+		padding: 0;
 		color: #fff;
+		position: relative;
+		.bg-blue{
+			background-color: #010d1f;
+			opacity: 0.6;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			border-radius: 5px;
+			border:1px solid #000;
+		}
 	}
 
 	.btn-main{
 		text-transform: uppercase;
 		color: #fff;
 		margin-bottom: 0;
+	}
+
+	.carousel{
+		img{
+			max-width: 145px;
+			margin: auto auto;
+			cursor: pointer;
+		}
+		.item{
+			height:170px;
+		}
 	}
 }
 

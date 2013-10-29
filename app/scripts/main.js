@@ -54,7 +54,7 @@ require.config({
     }
 });
 
-require(['app', 'jquery', 'bootstrapCollapse'], function (App, $) {
+require(['app', 'jquery', 'bootstrapCollapse', 'bootstrapCarousel'], function (App, $) {
     'use strict';    
 
     //---------------------- Active Camera ----------------------
@@ -93,10 +93,15 @@ require(['app', 'jquery', 'bootstrapCollapse'], function (App, $) {
         $(App.obj.photo).removeClass();
         var filter = $(this).attr("data-filter");
         $(App.obj.photo).addClass(filter);
+        App.controller.utils.setFilter(filter);
+        $(".filter .btn-main-selected").removeClass("btn-main-selected");
+        $(this).addClass("btn-main-selected");
     });
 
-    $('.filter .btn-reset').on("click", function () {        
-        $(App.obj.photo).removeClass();
+    $('.filter .btn-reset').on("click", function () {    
+        $("." + App.config.filter).removeClass(App.config.filter);
+        $(".filter .btn-main-selected").removeClass("btn-main-selected");
+        App.controller.utils.setFilter("");
     });    
 
     //---------------------- BTN Events ----------------------
@@ -113,20 +118,42 @@ require(['app', 'jquery', 'bootstrapCollapse'], function (App, $) {
         App.controller.utils.shareFacebook();
     });
 
+    $(".clear-all").on("click", function(){
+        $('.img-part-content').find("img").attr("src", "");
+    });
+
+    $(".accordion-toggle").on("click", function(){
+        $(".panel-heading .btn-main-selected").removeClass("btn-main-selected");
+        $(this).addClass("btn-main-selected");
+    });
+
+    $(".messages").find(".btn-main").on("click", function(){
+        $(".messages .btn-main-selected").removeClass("btn-main-selected");
+        $(this).addClass("btn-main-selected");
+    });
+
+    $(".messages").find(".btn-reset").on("click", function(){
+        $(".messages .btn-main-selected").removeClass("btn-main-selected");
+    });
+
     $('body').keyup(function(e){
        if(e.keyCode == 32){
            App.controller.utils.nextStep();
        }
     });
 
-    //---------------------- Accordion ----------------------
+    
+    //---------------------- Bootstrap Utils ----------------------
     
    // $(".collapse").collapse();
     $('#accordion').collapse({
         toggle: true
     });
 
-    //alert($('#accordion'));
+    $('.carousel').carousel({
+      interval: false
+    })
+
 
     // console.log(app);
     // console.log('Running jQuery %s', $().jquery);
