@@ -1,11 +1,27 @@
 {
     "Wolfman": [
         {
-            "fileName": "mascara.png",
+            "fileName": "ojillos.png",
             "category": "eyes"
         },
         {
+            "fileName": "ojos.png",
+            "category": "eyes"
+        },
+        {
+            "fileName": "full-cara.png",
+            "category": "fullface"
+        },
+        {
             "fileName": "nariz.png",
+            "category": "fullface"
+        },
+        {
+            "fileName": "colmillo.png",
+            "category": "mouth"
+        },
+        {
+            "fileName": "lobo_boca.png",
             "category": "mouth"
         }
     ],

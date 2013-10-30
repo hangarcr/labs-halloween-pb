@@ -30,6 +30,7 @@ module.exports = function (grunt) {
             },
             livereload: {
                 options: {
+                    
                     livereload: '<%= connect.options.livereload %>'
                 },
                 files: [

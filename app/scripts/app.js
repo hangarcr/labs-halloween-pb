@@ -5,11 +5,13 @@ define([], function () {
     var App = {
     	
     	config:{
-    		messageFB: "404 Error",
+    		imgpath: "http://RudadondeVivenlasimagenes/",
+    		facebookfileName: "",
     		video: {video: true, audio: false},
     		currentStep: 1,
     		imgUrl: "/images/monsterparts/",
-    		filter: ""
+    		filter: "",
+    		jsonLoaded: false
     	},
 
     	obj: {    		
@@ -37,14 +39,13 @@ define([], function () {
 	    		},
 
 	    		takePicture:function(){
-	    			//Clean Picture Class
-	    			$(App.obj.photo).removeClass();
 	    			// Not showing vendor prefixes or code that works cross-browser.
 					if (App.obj.stream) {
 						var ctx = App.obj.canvas.getContext('2d');
 						ctx.drawImage(App.obj.video, 0, 0, App.obj.canvas.width, App.obj.canvas.height);
 					    // "image/webp" works in Chrome 18. In other browsers, this will fall back to image/png.					    
 					    App.obj.photo.src = App.obj.canvas.toDataURL('image/jpeg', 1);
+					    //alert(App.obj.canvas.toDataURL('image/jpeg', 1));
 					    console.log(App.obj.photo);
 					}
 	    		}
@@ -57,9 +58,11 @@ define([], function () {
 				        G=Math.round((C/2)-(A/2))
 				    }
 	    			window.open(
-				      'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + encodeURIComponent("http://thehangar.cr") + '&p[images][0]=&p[title]=Hangar%20of%20the%20Dead&p[summary]=' + messageFB,
+				      'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + encodeURIComponent("http://thehangar.cr") + '&p[images][0]= '+ encodeURIComponent(App.config.imgpath + App.config.facebookfileName) + '&p[title]=Hangar%20of%20the%20Dead&p[summary]=Lorem Ipsum',
 				      'facebook-share-dialog', 
 				      'width='+D+',height=436,left='+ H +',top='+ G );
+
+	    			 //www.facebook.com/sharer/sharer.php?s=100&p[url]=www.google.com&p[images][0]=http://www.hdwallpapers.in/walls/love_hd-normal.jpg&p[title]=nada&p[summary]=nada
 	    		},
 
 	    		setFilter:function(filter){
@@ -91,8 +94,19 @@ define([], function () {
 	    		backStep:function(){
 	    			$(".step" + App.config.currentStep).hide();
 	    			App.config.currentStep--;
+	    			//Clear all
+	    			if (App.config.currentStep == 1){
+	    				App.controller.utils.clearAll();
+	    			}
+
 					$(".step" + App.config.currentStep).show();
 					$(".termomenter").find("div").removeAttr("class").addClass("level" + App.config.currentStep);
+	    		},
+
+	    		clearAll:function(){
+	    			$('.img-part-content').find("img").attr("src", "");
+    				$(".headline img").attr("src","");
+    				App.config.filter = "";
 	    		},
 
 	    		loadImages:function(jsonOBJ, category){
@@ -108,7 +122,39 @@ define([], function () {
 	    			var imgObj = $('.img-part-content').find(".img-"+category);
 	    			imgObj.attr("src",url);
 	    			imgObj.addClass(App.config.filter);
-	    		}
+	    		},
+
+	    		downloadCanvas:function(link, canvasId, filename) {
+				    link.href = document.getElementById(canvasId).toDataURL();
+				    link.download = filename;
+				},
+
+				saveImage:function(){
+					var timestamp = Number(new Date());
+					App.config.facebookfileName = timestamp + ".jpg";
+					$.ajax({ 
+                        type: "POST", 
+                        url: "http://saveImage.dev/images.php",
+                        dataType: 'json',
+                        data: {
+                            data : document.getElementById("final-canvas").toDataURL(),
+                            filename : timestamp + ".jpg"
+                        },
+                        beforeSend : function() {
+                            console.log('Sending ajax...');
+                        },
+                        complete : function( data ) {
+                            console.log('Send Ajax');
+                            
+                            if( data.responseJSON == "true") {
+                               console.log('File stored!!');
+                            } else {
+                                console.log('Error while storing the file...');
+                            }
+                        }
+                    });
+				}
+
 	    	}
 	    },
 
@@ -118,22 +164,63 @@ define([], function () {
 	    	},
 	    	step2: function() {
 	    		// Pulls in meal data from JSON file
-				$.getJSON('json/monster-part.json', function(json) {
-				    App.controller.utils.loadImages(json.Wolfman, "wolfman");
-				    App.controller.utils.loadImages(json.zombie, "zombie");
-				    App.controller.utils.loadImages(json.vampire, "vampire");
-				    App.controller.utils.loadImages(json.extras, "extras");
-				}).done(function() {
-					$(".part").on("click", function(){
-				        App.controller.utils.pasteImage($(this).data("category"), $(this).find("img").attr("src"));
-				    });
-				});
+				if (!App.config.jsonLoaded){
+					$.getJSON('json/monster-part.json', function(json) {
+					    App.controller.utils.loadImages(json.Wolfman, "wolfman");
+					    App.controller.utils.loadImages(json.zombie, "zombie");
+					    App.controller.utils.loadImages(json.vampire, "vampire");
+					    App.controller.utils.loadImages(json.extras, "extras");
+					}).done(function() {
+						App.config.jsonLoaded = true;
+						$(".part").on("click", function(){
+					        App.controller.utils.pasteImage($(this).data("category"), $(this).find("img").attr("src"));
+					    });
+					});
+				}
+				
 	    	},
 	    	step3: function() {
 	    		console.log("Hacer paso 4");
 	    	},
 	    	step4: function() {
-	    		console.log("Hacer paso 4");
+	    		//Save Images
+	    		var c = document.getElementById("final-canvas");
+				var ctx = c.getContext("2d");
+				//Get Big Photo
+				var img = App.obj.photo;
+				ctx.translate(518, 0);
+				ctx.scale(-1, 1);
+				//ctx.drawImage(img, 221, 35, c.width, c.height, 44, 35, c.width-221, c.height);
+				ctx.drawImage(img, 218, 0, c.width, c.height, -35, 70, c.width, c.height);
+				
+				//Get Full - Face
+				ctx.translate(518, 0);
+				ctx.scale(-1, 1);
+				img = document.querySelector(".img-fullface");
+				ctx.drawImage(img, 0, 0, c.width, c.height);
+				//Get Eyes
+				img = document.querySelector(".img-eyes");
+				ctx.drawImage(img, 0, 0, c.width, c.height);
+				//Get Mouth
+				img = document.querySelector(".img-mouth");
+				ctx.drawImage(img, 0, 0, c.width, c.height);
+				//Get Forehead
+				ctx.translate(518, 0);
+				ctx.scale(-1, 1);
+				img = document.querySelector(".img-forehead");
+				ctx.drawImage(img, 0, 0, c.width, c.height);
+				//Get booth
+				ctx.translate(518, 0);
+				ctx.scale(-1, 1);
+				img = document.querySelector(".booth");
+				ctx.drawImage(img, 0, 0, c.width, c.height);
+
+				img = document.querySelector(".headline-message");
+				ctx.drawImage(img, 24, 77, 460 , 105);
+
+				App.controller.utils.saveImage();
+
+				
 	    	}
 
 	    }

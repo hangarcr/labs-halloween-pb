@@ -18,28 +18,31 @@
         <!--[if lt IE 10]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
+        <canvas id="final-canvas" width="518" height="768"></canvas>
         <section id="booth">
             <div class="main-wrap">
                 <div class="camera-container">
-                    <video width="640" height="480" class="step1" id="booth-camera" autoplay></video>
+                    <video width="960" height="720" class="step1" id="booth-camera" autoplay></video>
                     <img id="booth-photo" src="">
-                    <canvas width="640" height="480" id="booth-canvas"></canvas>
-                    <div class="img-part-content">
-                        <img class="img-fullface" src=""/>
-                        <img class="img-forehead" src=""/>
-                        <img class="img-eyes" src=""/>
-                        <img class="img-mouth" src=""/>
-                    </div>
+                    <canvas width="960" height="720" id="booth-canvas"></canvas>
                 </div>
                 <!--<div id="controls">
                     <input type="button" class="button green" value="next"/>    
                 </div>-->
-                <div class="skull step1"></div>
-               
+                <div class="img-part-content">
+                    <img class="img-fullface" src=""/>
+                    <img class="img-eyes" src=""/>
+                    <img class="img-mouth" src=""/>
+                    <img class="img-forehead" src=""/>
+                </div>
+                <img class="booth" src="/images/layout/share_booth.png" width="518" height="768" />
                 <div class="mask">
+                    <div class="headline">
+                        <img class="headline-message" src="">
+                    </div>
                     <div class="controls">
-                        <div class="step1"><i class="glyphicon glyphicon-camera btn-icon next" title="Take a Picture"></i></div>
+                        <div class="step1">
+                        <i class="glyphicon glyphicon-camera btn-icon next" title="You can use the space bar too" ></i></div>
                         <div class="step2 step3 step4">
                             <i class="glyphicon glyphicon-arrow-left btn-icon back" title="Back"></i>
                             <i class="glyphicon glyphicon-arrow-right btn-icon next" title="Next"></i>
@@ -47,15 +50,16 @@
                         <div class="step5">
                             <i class="glyphicon glyphicon-arrow-left btn-icon back" title="Back"></i>
                             <i class="glyphicon glyphicon-share btn-icon" title="Share"></i>
-                            <i class="glyphicon glyphicon-download btn-icon" title="Download"></i>
+                            <a id="download" class="glyphicon glyphicon-download btn-icon" title="Download"></a>
                         </div>
                     </div>
                 </div>
+                <div class="skull step1"></div>
 
                 <div class="filter step2">
                     <a class="btn-main" data-filter="zombie">Zombie aspergilosis</a>
                     <a class="btn-main" data-filter="canis">Canis lupus-taenia</a>
-                    <a class="btn-main" data-filter="pup">Pupkinysis</a>
+                    <a class="btn-main" data-filter="pup">Pumpkinysis</a>
                     <a class="btn-main" data-filter="vampire">Vampire cytogenes</a>
                     <a class="btn-main" data-filter="ghost">Ghostmonella</a>
                     <a class="btn-main" data-filter="krokodil">Krokodil</a>
@@ -177,14 +181,14 @@
                 </div>
 
                 <div class="messages step4">
-                    <a class="btn-main">Didn't submit Tenrox</a>
-                    <a class="btn-main">IE6 Support</a>
-                    <a class="btn-main">Didn't name my layers</a>
-                    <a class="btn-main">[Spam] Reply All</a>
-                    <a class="btn-main">Due to yesturday</a>
-                    <a class="btn-main">Work from Grave</a>
-                    <a class="btn-main">Jira is Down</a>
-                    <a class="btn-main">404 not found</a>
+                    <a class="btn-main" data-file="tenrox">Didn't submit Tenrox</a>
+                    <a class="btn-main" data-file="ie6">IE6 Support</a>
+                    <a class="btn-main" data-file="name">Didn't name my layers</a>
+                    <a class="btn-main" data-file="spam">[Spam] Reply All</a>
+                    <a class="btn-main" data-file="dueto">Due to yesturday</a>
+                    <a class="btn-main" data-file="wfg">Work from Grave</a>
+                    <a class="btn-main" data-file="jira">Jira is Down</a>
+                    <a class="btn-main" data-file="404">404 not found</a>
                     <a class="btn-reset">No Message</a>
                 </div>
                 
@@ -195,7 +199,7 @@
             </div>
         </section>
 
-        <!--<object class="audio" height="50" width="100" data="audio/HangarOfTheDead.mp3"></object>-->
+        <object class="audio" height="50" width="100" data="audio/HangarOfTheDead.mp3"></object>
         
         <!-- build:js scripts/vendor.js -->
         <!-- bower:js -->

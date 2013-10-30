@@ -54,7 +54,7 @@ require.config({
     }
 });
 
-require(['app', 'jquery', 'bootstrapCollapse', 'bootstrapCarousel'], function (App, $) {
+require(['app', 'jquery', 'bootstrapCollapse', 'bootstrapCarousel', 'bootstrapTooltip'], function (App, $) {
     'use strict';    
 
     //---------------------- Active Camera ----------------------
@@ -130,10 +130,12 @@ require(['app', 'jquery', 'bootstrapCollapse', 'bootstrapCarousel'], function (A
     $(".messages").find(".btn-main").on("click", function(){
         $(".messages .btn-main-selected").removeClass("btn-main-selected");
         $(this).addClass("btn-main-selected");
+        $(".headline img").attr("src", "/images/headlines/" + $(this).attr("data-file") + ".png"); 
     });
 
     $(".messages").find(".btn-reset").on("click", function(){
         $(".messages .btn-main-selected").removeClass("btn-main-selected");
+        $(".headline img").attr("src","");
     });
 
     $('body').keyup(function(e){
@@ -142,6 +144,13 @@ require(['app', 'jquery', 'bootstrapCollapse', 'bootstrapCarousel'], function (A
        }
     });
 
+    document.getElementById('download').addEventListener('click', function() {
+        App.controller.utils.downloadCanvas(this, 'final-canvas', 'myscaryface.png'); 
+    }, false);
+
+    //$(".glyphicon-download").on("click", function(){
+    //    App.controller.utils.downloadCanvas($(this), 'final-canvas', 'myscaryface.png'); // <- this can be a dynamic name
+    //});
     
     //---------------------- Bootstrap Utils ----------------------
     

@@ -18,7 +18,11 @@ $booth-height: 768px;
         position: absolute;
         top: 0px;
         left: 245px; 
-
+        .headline{
+            position: absolute;
+            top: 77px;
+            left: 24px;
+        }
         /*Control Bar*/
         .controls{
             position: relative;
@@ -86,26 +90,34 @@ $booth-height: 768px;
             height: $camera-height;
         }    
 
-        .img-part-content{
+        
+    }
+    .img-part-content{
+        position: absolute;
+        top: 0;
+        left: 245px; 
+        width:$booth-width;
+        height:$booth-height; 
+        img{
             position: absolute;
             top: 0;
-            width:$camera-width;
-            height:$camera-height;  
-            img{
-                position: absolute;
-                top: 0;
-                left: -31px;
-            }
-        }      
-    }
-
+            left: 0;
+        }
+    }      
     .skull{
         background: transparent url("../images/layout/guidelines.png") no-repeat scroll center top; 
-        width: 332px;
-        height: 402px;
+        width:$booth-width;
+        height:$booth-height;  
         position: absolute;
-        top: 319px;
-        left: 340px;
+        top: 0px;
+        left: 245px; 
+    }
+
+    .booth{
+        position: absolute;
+        top: 0px;
+        left: 245px;
+        visibility: hidden;
     }
 
 }

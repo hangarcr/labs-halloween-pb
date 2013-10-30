@@ -18,10 +18,12 @@ body {
 
 .btn-icon:hover{
 	background-position: -0px 0;
+	color: #87d1e7;
 }
 
 .btn-icon:active{
 	background-position: -44px 0;
+	color: #87d1e7;
 }
 /********************* MAIN BTN ************************/
 .btn-main{
@@ -174,12 +176,12 @@ body {
 
 	.carousel{
 		img{
-			max-width: 145px;
-			margin: auto auto;
+			max-width: 190px;
+			margin: -50px 0px 0 -5px;
 			cursor: pointer;
 		}
 		.item{
-			height:170px;
+			height:220px;
 		}
 	}
 }
@@ -220,4 +222,10 @@ body {
 		height: 152px;
 		top: 65px;
 	}
+}
+
+#final-canvas{
+	position: absolute;
+	top: 0;
+	left: 0;
 }

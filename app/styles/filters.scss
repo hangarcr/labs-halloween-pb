@@ -1,31 +1,28 @@
 
 .zombie{
-    -webkit-filter: hue-rotate(180deg);
-    // -webkit-filter: contrast(5);
-    -webkit-filter: saturate(5);
+    -webkit-filter: brightness(1.5) grayscale(0.5) hue-rotate(60deg) saturate(2.2);
 }
 
 .canis{
-    -webkit-filter: blur(3px);
+    -webkit-filter: brightness(1.2) grayscale(0.8) saturate(1.5) sepia(0.6);
 }
 
 .pup{
-    -webkit-filter: hue-rotate(255deg);
-    -webkit-filter: contrast(4);
+    -webkit-filter: brightness(1.5) grayscale(0.4) hue-rotate(330deg) saturate(3);
 }
 
 .vampire{
-    -webkit-filter: grayscale(0.5);
+    -webkit-filter: brightness(1.5) contrast(1.4) grayscale(0.8);
 }
 
 .ghost{
-    -webkit-filter: opacity(0.3);
-    -webkit-filter: brightness(2.5);
+    -webkit-filter: brightness(1.5) grayscale(0.9) opacity(0.7);
 }
 
 .krokodil{
-    -webkit-filter: saturate(2);
-    -webkit-filter: hue-rotate(180deg);
+    -webkit-filter: brightness(1.1) grayscale(0.2) hue-rotate(120deg) saturate(2.4);
+    /*-webkit-filter: saturate(2);
+    -webkit-filter: hue-rotate(180deg);*/
 }
 
 // -webkit-filter: blur(3px);
