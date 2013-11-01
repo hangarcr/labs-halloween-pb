@@ -67,7 +67,7 @@ define([], function () {
 				        G=Math.round((C/2)-(A/2))
 				    }
 	    			window.open(
-				      'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + encodeURIComponent("http://thehangar.cr") + '&p[images][0]= '+ encodeURIComponent(App.config.facebookfileName) + '&p[title]=Hangar%20of%20the%20Dead&p[summary]=Lorem Ipsum',
+				      'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + encodeURIComponent("http://thehangar.cr") + '&p[images][0]= '+ encodeURIComponent(App.config.facebookfileName) + '&p[title]=Hangar%20of%20the%20Dead&p[summary]=Know with the Hangar whata terror day means.',
 				      'facebook-share-dialog', 
 				      'width='+D+',height=436,left='+ H +',top='+ G );	    			 
 	    		},
