@@ -55,8 +55,9 @@ require.config({
 });
 
 require(['app', 'jquery', 'bootstrapCollapse', 'bootstrapCarousel', 'bootstrapTooltip'], function (App, $) {
-    'use strict';    
-
+    'use strict';        
+    
+   
     //---------------------- Active Camera ----------------------
     if(App.validation.hasGetUserMedia){  
 
@@ -91,8 +92,20 @@ require(['app', 'jquery', 'bootstrapCollapse', 'bootstrapCarousel', 'bootstrapTo
 
     $('.filter .btn-main').on("click", function () {    
         $(App.obj.photo).removeClass();
+
         var filter = $(this).attr("data-filter");
+        
+        $('.img-part-content img').each(function () {
+            console.log($(this));
+            $(this).removeClass();
+            $(this).addClass(filter);
+        });
+
+
+
         $(App.obj.photo).addClass(filter);
+        
+
         App.controller.utils.setFilter(filter);
         $(".filter .btn-main-selected").removeClass("btn-main-selected");
         $(this).addClass("btn-main-selected");
@@ -130,7 +143,8 @@ require(['app', 'jquery', 'bootstrapCollapse', 'bootstrapCarousel', 'bootstrapTo
     $(".messages").find(".btn-main").on("click", function(){
         $(".messages .btn-main-selected").removeClass("btn-main-selected");
         $(this).addClass("btn-main-selected");
-        $(".headline img").attr("src", "/images/headlines/" + $(this).attr("data-file") + ".png"); 
+        $(".headline img").attr("src", "/images/headlines/" + $(this).attr("data-file") + ".png");
+        App.config.headline = $(this).attr("data-id");
     });
 
     $(".messages").find(".btn-reset").on("click", function(){
@@ -147,14 +161,9 @@ require(['app', 'jquery', 'bootstrapCollapse', 'bootstrapCarousel', 'bootstrapTo
     document.getElementById('download').addEventListener('click', function() {
         App.controller.utils.downloadCanvas(this, 'final-canvas', 'myscaryface.png'); 
     }, false);
-
-    //$(".glyphicon-download").on("click", function(){
-    //    App.controller.utils.downloadCanvas($(this), 'final-canvas', 'myscaryface.png'); // <- this can be a dynamic name
-    //});
     
     //---------------------- Bootstrap Utils ----------------------
     
-   // $(".collapse").collapse();
     $('#accordion').collapse({
         toggle: true
     });
@@ -163,7 +172,5 @@ require(['app', 'jquery', 'bootstrapCollapse', 'bootstrapCarousel', 'bootstrapTo
       interval: false
     })
 
-
     // console.log(app);
-    // console.log('Running jQuery %s', $().jquery);
 });

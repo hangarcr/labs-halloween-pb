@@ -11,7 +11,8 @@ define([], function () {
     		currentStep: 1,
     		imgUrl: "/images/monsterparts/",
     		filter: "",
-    		jsonLoaded: false
+    		jsonLoaded: false,
+    		headline: ""    		
     	},
 
     	obj: {    		
@@ -41,12 +42,20 @@ define([], function () {
 	    		takePicture:function(){
 	    			// Not showing vendor prefixes or code that works cross-browser.
 					if (App.obj.stream) {
+						
 						var ctx = App.obj.canvas.getContext('2d');
-						ctx.drawImage(App.obj.video, 0, 0, App.obj.canvas.width, App.obj.canvas.height);
+
+						$('#flash').show();
+
+						setTimeout(function(){							
+							ctx.drawImage(App.obj.video, 0, 0, App.obj.canvas.width, App.obj.canvas.height);
+						    App.obj.photo.src = App.obj.canvas.toDataURL('image/jpeg', 1);
+							$('#flash').hide();
+						},400);
+						
+						
 					    // "image/webp" works in Chrome 18. In other browsers, this will fall back to image/png.					    
-					    App.obj.photo.src = App.obj.canvas.toDataURL('image/jpeg', 1);
 					    //alert(App.obj.canvas.toDataURL('image/jpeg', 1));
-					    console.log(App.obj.photo);
 					}
 	    		}
 	    	},
@@ -58,14 +67,13 @@ define([], function () {
 				        G=Math.round((C/2)-(A/2))
 				    }
 	    			window.open(
-				      'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + encodeURIComponent("http://thehangar.cr") + '&p[images][0]= '+ encodeURIComponent(App.config.imgpath + App.config.facebookfileName) + '&p[title]=Hangar%20of%20the%20Dead&p[summary]=Lorem Ipsum',
+				      'http://www.facebook.com/sharer/sharer.php?s=100&p[url]=' + encodeURIComponent("http://thehangar.cr") + '&p[images][0]= '+ encodeURIComponent(App.config.facebookfileName) + '&p[title]=Hangar%20of%20the%20Dead&p[summary]=Lorem Ipsum',
 				      'facebook-share-dialog', 
-				      'width='+D+',height=436,left='+ H +',top='+ G );
-
-	    			 //www.facebook.com/sharer/sharer.php?s=100&p[url]=www.google.com&p[images][0]=http://www.hdwallpapers.in/walls/love_hd-normal.jpg&p[title]=nada&p[summary]=nada
+				      'width='+D+',height=436,left='+ H +',top='+ G );	    			 
 	    		},
 
 	    		setFilter:function(filter){
+	    			
 	    			App.config.filter = filter;
 	    		},
 
@@ -73,7 +81,9 @@ define([], function () {
 					switch(App.config.currentStep)
 					{
 						case 1:
+							
 						  App.flow.step1();
+
 						  break;
 						case 2:
 						  App.flow.step2();
@@ -106,7 +116,7 @@ define([], function () {
 	    		clearAll:function(){
 	    			$('.img-part-content').find("img").attr("src", "");
     				$(".headline img").attr("src","");
-    				App.config.filter = "";
+    				// App.config.filter = "";
 	    		},
 
 	    		loadImages:function(jsonOBJ, category){
@@ -119,38 +129,44 @@ define([], function () {
 	    		},
 
 	    		pasteImage:function(category, url){
-	    			var imgObj = $('.img-part-content').find(".img-"+category);
+	    			var imgObj = $('.img-part-content').find("#img-"+category);
 	    			imgObj.attr("src",url);
 	    			imgObj.addClass(App.config.filter);
 	    		},
 
 	    		downloadCanvas:function(link, canvasId, filename) {
-				    link.href = document.getElementById(canvasId).toDataURL();
+				    // link.href = document.getElementById(canvasId).toDataURL();
+				    link.href = App.config.facebookfileName;
 				    link.download = filename;
 				},
 
 				saveImage:function(){
 					var timestamp = Number(new Date());
+
 					App.config.facebookfileName = timestamp + ".jpg";
+
+					console.log(App.config.headline);
+
 					$.ajax({ 
                         type: "POST", 
-                        url: "http://saveImage.dev/images.php",
+                        url: "http://166.78.57.50/labs-photobooth-filters/process.php",
                         dataType: 'json',
                         data: {
-                            data : document.getElementById("final-canvas").toDataURL(),
-                            filename : timestamp + ".jpg"
+                            data : document.getElementById("final-canvas").toDataURL('image/jpeg'),
+                            filename : timestamp + ".jpg",
+                            filter : App.config.filter,
+                            headline : App.config.headline,
+
                         },
                         beforeSend : function() {
                             console.log('Sending ajax...');
                         },
                         complete : function( data ) {
-                            console.log('Send Ajax');
+                            console.log('Ajax Sent');
+                            console.log(data.responseJSON.url);
                             
-                            if( data.responseJSON == "true") {
-                               console.log('File stored!!');
-                            } else {
-                                console.log('Error while storing the file...');
-                            }
+                            App.config.facebookfileName = data.responseJSON.url;
+
                         }
                     });
 				}
@@ -183,44 +199,49 @@ define([], function () {
 	    		console.log("Hacer paso 4");
 	    	},
 	    	step4: function() {
-	    		//Save Images
+
+	    		//Save Final Image
+
 	    		var c = document.getElementById("final-canvas");
 				var ctx = c.getContext("2d");
-				//Get Big Photo
+
+				//Get My Photo
 				var img = App.obj.photo;
 				ctx.translate(518, 0);
-				ctx.scale(-1, 1);
-				//ctx.drawImage(img, 221, 35, c.width, c.height, 44, 35, c.width-221, c.height);
+				ctx.scale(-1, 1);				
 				ctx.drawImage(img, 218, 0, c.width, c.height, -35, 70, c.width, c.height);
 				
 				//Get Full - Face
 				ctx.translate(518, 0);
 				ctx.scale(-1, 1);
-				img = document.querySelector(".img-fullface");
-				ctx.drawImage(img, 0, 0, c.width, c.height);
-				//Get Eyes
-				img = document.querySelector(".img-eyes");
-				ctx.drawImage(img, 0, 0, c.width, c.height);
-				//Get Mouth
-				img = document.querySelector(".img-mouth");
-				ctx.drawImage(img, 0, 0, c.width, c.height);
-				//Get Forehead
-				ctx.translate(518, 0);
-				ctx.scale(-1, 1);
-				img = document.querySelector(".img-forehead");
-				ctx.drawImage(img, 0, 0, c.width, c.height);
-				//Get booth
-				ctx.translate(518, 0);
-				ctx.scale(-1, 1);
-				img = document.querySelector(".booth");
+				img = document.querySelector("#img-fullface");
 				ctx.drawImage(img, 0, 0, c.width, c.height);
 
-				img = document.querySelector(".headline-message");
-				ctx.drawImage(img, 24, 77, 460 , 105);
+				//Get Eyes
+				img = document.querySelector("#img-eyes");
+				ctx.drawImage(img, 0, 0, c.width, c.height);
+
+				//Get Mouth
+				img = document.querySelector("#img-mouth");
+				ctx.drawImage(img, 0, 0, c.width, c.height);
+
+				//Get Forehead
+				// ctx.translate(518, 0);
+				// ctx.scale(-1, 1);
+				img = document.querySelector("#img-forehead");
+				ctx.drawImage(img, 0, 0, c.width, c.height);
+
+				//Get booth
+				// ctx.translate(518, 0);
+				// ctx.scale(-1, 1);
+				// img = document.querySelector(".booth");
+				// ctx.drawImage(img, 0, 0, c.width, c.height);
+
+				// //Get headline (yellow title)
+				// img = document.querySelector(".headline-message");
+				// ctx.drawImage(img, 24, 77, 460 , 105);
 
 				App.controller.utils.saveImage();
-
-				
 	    	}
 
 	    }

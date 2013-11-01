@@ -21,18 +21,34 @@
 
 .krokodil{
     -webkit-filter: brightness(1.1) grayscale(0.2) hue-rotate(120deg) saturate(2.4);
-    /*-webkit-filter: saturate(2);
-    -webkit-filter: hue-rotate(180deg);*/
 }
 
-// -webkit-filter: blur(3px);
-// -webkit-filter: grayscale(1);
-// -webkit-filter: sepia(1);
-// -webkit-filter: brightness(2.5);
-// -webkit-filter: contrast(5);
-// -webkit-filter: hue-rotate(125deg);
-// -webkit-filter: invert(1);
-// -webkit-filter: saturate(3);
-// -webkit-filter: opacity(0.3);
+// new filters
 
+.boost{
+	-webkit-filter: brightness(1.2) contrast(1.2) grayscale(0.3) saturate(1.9);
+}
 
+.dreamy{
+	-webkit-filter: brightness(1.3) contrast(0.9) hue-rotate(330deg) saturate(2.1) sepia(0.1);
+}
+
+.velvet{
+	-webkit-filter: brightness(1.4) contrast(0.6) grayscale(0.3) hue-rotate(360deg) saturate(1.3);
+}
+
+.chrome{
+	-webkit-filter: brightness(1.3) contrast(0.8) saturate(1.1) sepia(0.1);
+}
+
+.lift{
+	-webkit-filter: brightness(1.7) contrast(0.9) grayscale(0.1) hue-rotate(330deg) saturate(1.4) sepia(0.1);
+}
+
+.blackwhite{
+	-webkit-filter: brightness(1.3) contrast(1.3) grayscale(1);
+}
+
+.canvas{
+	-webkit-filter: brightness(1.5) hue-rotate(360deg) saturate(1.9);
+}
